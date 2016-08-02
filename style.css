@@ -1,0 +1,87 @@
+body{
+  /*background-color: rgb(16, 16, 16);*/
+  background: url('http://littlealleysteak.fhfoodtradinggroup.com/wp-content/themes/lasteak/images/wood-background.jpg');
+}
+button{
+  width: 50px;
+  height: 100px;
+  margin: 0;
+  display: inline-block;
+}
+audio {
+   display:none;
+}
+#radio{
+  padding-top:35px;
+  background-color: #1b1919;
+  border-radius: 25px;
+  width: 70%;
+  margin: auto;
+  margin-top: 13%;
+}
+#upper{
+  display: block;
+  width: 250px;
+  margin: auto;
+}
+#upper button{
+  width: 250px;
+}
+#center{
+  display: block;
+  width: 1008px;
+  margin: auto;
+  margin-top: 25px;
+}
+#center button{
+  float:left;
+}
+#lower{
+  display: block;
+  width: 200px;
+  margin: auto;
+  margin-top: 150px;
+}
+#freq{
+  color: #074629;
+  display: inline-block;
+  margin-left: 30px;
+}
+#station{
+  color: #074629;
+  display: inline-block;
+  float: right;
+  margin-right: 30px;
+}
+#display{
+  height: 100px;
+  display: block;
+  float:left;
+  width: 900px;
+  background-color: #141f1a;
+  top: -42px;
+  color: white;
+  font-family: fantasy;
+  font-weight:  lighter;
+}
+#lowerbar{
+  background-color: black;
+  width: 100%;
+  padding-top: 5px;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+#lowerbar a{
+  color: inherit;
+}
+#lowerbar li{
+  display: inline;
+  padding-right: 15px;
+  padding-left: 15px;
+  border-right: 1px solid white;
+}
+.liend{
+  border: 0px !important;
+}
