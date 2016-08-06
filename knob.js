@@ -175,7 +175,7 @@
                     function () {
                         s.val(s._validate(s.o.parse(s.$.val())));
                         //Change Number
-                        radio_Volume_Change(s._validate(s.o.parse(s.$.val())));
+                        radio.radio_Volume_Change(s._validate(s.o.parse(s.$.val())));
                     }
                 );
 
@@ -387,7 +387,7 @@
                     function (e) {
                         k.c.d.unbind('mousemove.k mouseup.k keyup.k');
                         s.val(s.cv);
-                        radio_Volume_Change(s.cv);
+                        radio.radio_Volume_Change(s.cv);
                     }
                 );
 
@@ -585,7 +585,7 @@
 
                     s.val(v, false);
                     //Scroll Wheel
-                    radio_Volume_Change(v);
+                    radio.radio_Volume_Change(v);
 
                     if (s.rH) {
                         // Handle mousewheel stop
@@ -733,7 +733,7 @@
         this.change = function (v) {
             this.cv = v;
             this.$.val(this.o.format(v));
-            radio_Volume_Change(this.o.format(v));
+            radio.radio_Volume_Change(this.o.format(v));
         };
 
         this.angle = function (v) {
