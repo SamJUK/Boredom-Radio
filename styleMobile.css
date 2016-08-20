@@ -15,7 +15,7 @@ audio {
   padding-top:35px;
   background-color: #1b1919;
   border-radius: 25px;
-  width: 1200px;
+  width: 600px;
   margin: auto;
   margin-top: 13%;
 }
@@ -29,9 +29,10 @@ audio {
 }
 #center{
   display: block;
-  width: 1008px;
+  width: 800px;
   margin: auto;
   margin-top: 25px;
+  margin-left: 25px;
 }
 #center button{
   float:left;
@@ -57,7 +58,7 @@ audio {
   height: 100px;
   display: block;
   float:left;
-  width: 900px;
+  width: 400px;
   background-color: #141f1a;
   top: -42px;
   color: white;
