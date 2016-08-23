@@ -1,0 +1,4 @@
+Error Code Definitions:
+1 - radio.PlayState | radio.RadioState returned a number that is not 0 or 1 | How can i not be Playing or Stopped?
+2 - radio.StationSeek | Direction is not "up" or "down" | What direction to modify in the channels in?
+3 - UI.Hamburger | Hamburger State is not "Closed" or "Open" | Hamburger is not Open Or Closed? Wut?
