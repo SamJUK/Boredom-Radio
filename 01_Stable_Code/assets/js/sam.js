@@ -51,20 +51,19 @@ radio = {
     },
   //Change Station Function
     StationChange: function(stationID){
-    stationName = radio.Stations[stationID].name;
-    $("#Station").text(stationName);
-
-    var audio = document.getElementById('audio');
-    var audioSource = document.getElementById('audiosource');
-    audioSource.src = radio.Stations[stationID].audioLink;
-    audio.load();
+      stationName = radio.Stations[stationID].name;
+      $("#Station").text(stationName);
+      var audio = document.getElementById('audio');
+      var audioSource = document.getElementById('audiosource');
+      audioSource.src = radio.Stations[stationID].audioLink;
+      audio.load();
     },
 
     StationSeek: function(direction){
       if (radio.RadioState == 0){return;};
       if (direction == "up"){
         radio.ActiveStation = radio.ActiveStation + 1;
-        if (radio.ActiveStation > 4){
+        if (radio.ActiveStation > (radio.Stations.length - 1)){
           radio.ActiveStation = 0;
         };
         radio.StationChange(radio.ActiveStation);
@@ -82,6 +81,38 @@ radio = {
     ErrorOutput: function(code){
       console.log('Error Code: '+code);
       console.log('Please contact the web administrator or a developer at radio@samdjames.uk with this error code!');
+    },
+    AddStation: function(){
+      sname = prompt("Whats the name of the station?");
+      slink = prompt("Whats the link of the station?");
+      newStation = {name: sname, audioLink: slink};
+      radio.Stations.push(newStation);
+      alert("New Station Added!");
+    },
+    EditStation: function(){
+      station = prompt("Name of station to edit?");
+      if (SAM.InArray(station)){
+        if (SAM.ian > -1){
+          if (confirm("Do you want to edit the name?")){
+            radio.Stations[SAM.ian].name = prompt("New name of the station?");
+          };
+          if (confirm("Do you want to edit the url?")){
+            radio.Stations[SAM.ian].audioLink = prompt("New URL of the station?");
+          }
+        }
+      }else{
+        alert("No such station!");
+      }
+    },
+    RemoveStation: function(){
+      station = prompt("Station Name To Remove?");
+      if (SAM.InArray(station)){
+        if (SAM.ian > -1){
+          radio.Stations.splice(SAM.ian, 1);
+        };
+      }else{
+        radio.ErrorOutput("No such station!");
+      };
     }
 };
 
@@ -117,9 +148,20 @@ UI = {
 };
 /*******************SAM******************/
 SAM = {
+  ian: 0,
   ErrorOutput: function(code){
     console.log('Error Code: '+code);
     console.log('Please contact the web administrator or a developer at radio@samdjames.uk with this error code!');
+  },
+  InArray: function(s){
+    for (var i = 0; i < radio.Stations.length; i++) {
+      if (s == radio.Stations[i].name){
+        SAM.ian = i;
+        return true;
+      }else{
+      }
+    }
+    return false;
   }
 };
 /***********INIT STUFF**************/
