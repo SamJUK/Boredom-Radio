@@ -1,0 +1,96 @@
+<html>
+    <head>
+      <title>Landing :: Boredom Radio</title>
+      <link href="assets/img/256.ico" type="image/ico" rel="icon">
+      <link href="style.css" type="text/css" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet" />
+      <link href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css" rel="stylesheet" >
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous" />
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+      <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    </head>
+    <body>
+      <a name="Home"></a>
+      <div id="Cover">
+        <div id="left">
+          <img src="img/logo.png" rel="Boredom Radio Logo"/>
+          <span>Boredom<br/>
+            Radio
+          </span>
+        </div>
+        <div id="right">
+          <a class="smoothScroll" href="#Home"><span>Home</span></a>
+          <a class="smoothScroll" href="#Listen"><span>Listen</span></a>
+          <a class="smoothScroll" href="#About"><span>About</span></a>
+          <a class="smoothScroll" href="https://github.com/SamJUK/Boredom-Radio"><span>Fork Me!</span></a>
+        </div>
+        <a class="smoothScroll" href="#listen">
+          <div id="spikything">
+            <div id="spike">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div id="icon"></div>
+          </div>
+          <div id="stline"></div>
+        </a>
+      </div>
+      <div id="listen">
+        <a name="Listen"></a>
+        <h1>Listen Now!</h1>
+        <div id="left">
+          <img src="http://sheet.host/assets/img/score-placeholder.png" alt="Currently Playing Album Artwork" />
+          <div id="track-info">
+            <span id="track">{Track Name}</span>
+            <span id="artist">{Artist's Names}</span>
+          </div>
+        </div>
+        <div id="stations">
+          <div id="col1">
+            <ul><ul>
+          </div>
+          <div id="col2">
+            <ul></ul>
+          </div>
+        </div>
+        <div id="radio">
+          <span id="stationname">Capital</span>
+          <div id="playbackControls">
+            <i onMouseDown="radio.StationSeek('down');" class="fa fa-step-backward" aria-hidden="true"></i>
+            <i onMouseDown="radio.PlayState();" id="playPause" class="fa fa-play" aria-hidden="true"></i>
+            <i onMouseDown="radio.StationSeek('up');" class="fa fa-step-forward" aria-hidden="true"></i>
+          </div>
+          <div id="audio">
+            <i class="fa fa-volume-up" aria-hidden="true"></i>
+            <div id="VolumeSlider"></div>
+          </div>
+        </div>
+      </div>
+      <a name="About"></a>
+      <div id="footer">
+        <div id="left">
+          <a href="https://github.com/SamJUK/Boredom-Radio">
+            <img src="img/github.png" alt="Github Logo" />
+            <span>Fork me on Github!</span>
+          </a>
+        </div>
+        <div id="middle">
+          <span id="copyright">Copyright &copy; Boredom Radio 2016</span>
+        </div>
+        <div id="right">
+          <a href="http://samdjames.uk/">
+            <img src="img/nin.png" alt="Developer Logo" />
+            <span>Made by SamJ</span></a>
+          </div>
+      </div>
+      <audio id="audiotag" autoplay="true">
+        <source id="audiosourcetag" type="audio/aac">
+      </audio>
+      <script src="smoothscroll.js"></script>
+      <script src="main.js"></script>
+    </body>
+</html>

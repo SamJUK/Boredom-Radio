@@ -1,0 +1,284 @@
+/****CSS RESET****/html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-collapse:collapse;border-spacing:0}
+body{
+  font-family: 'PT Sans', sans-serif;
+}
+#Cover{
+  width: 100%;
+  height: 85%;
+  background: url('img/bg.jpg') no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+#Cover #left{
+  float: left;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+}
+#Cover #left img{
+  float: left;
+  width: 120px;
+  margin: 10px 10px 10px 30px;
+  cursor: pointer;
+}
+#Cover #left span{
+  color: #F3F3F3;
+  font-weight: bold;
+  text-align: left;
+  font-size: 40px;
+  margin-top: 44px;
+  float: left;
+}
+#Cover #left span:hover{
+  color: #66b8fa;
+  cursor: pointer;
+}
+#Cover #right{
+  position: fixed;
+  right: 0;
+  color: #F3F3F3;
+  font-size: 27px;
+  margin-top: 25px;
+  margin-right: 40px;
+}
+#Cover #right a{
+  color: inherit;
+  text-decoration: none;
+}
+#Cover #right span{
+  margin-left: 30px;
+  cursor: pointer;
+}
+#Cover #right span:hover{
+  color: #66b8fa;
+}
+#Cover #spikything{
+  bottom: 300px;
+  left: 46.5%;
+  position: fixed;
+  cursor: pointer;
+  z-index: 5;
+}
+#Cover #spikything #spike div{
+  width: 100px;
+  height: 100px;
+  border: 1px solid #F3F3F3;
+  position: fixed;
+}
+#Cover #spikything #spike div:nth-child(1){
+  transform: rotate(15deg);
+}
+#Cover #spikything #spike div:nth-child(2){
+  transform: rotate(30deg);
+}
+#Cover #spikything #spike div:nth-child(3){
+  transform: rotate(45deg);
+}
+#Cover #spikything #spike div:nth-child(4){
+  transform: rotate(60deg);
+}
+#Cover #spikything #spike div:nth-child(5){
+  transform: rotate(90deg);
+}
+#Cover #spikything #spike div:nth-child(6){
+  transform: rotate(75deg);
+}
+#Cover #spikything #icon{
+  background: url('img/hp.png');
+  width: 50px;
+  height: 50px;
+  background-size: cover;
+  margin: 25px 25px 25px 25px;
+}
+#Cover #stline{
+  width: 1px;
+  height: 280px;
+  background-color: #F3F3F3;
+  bottom: 0px;
+  left: 49%;
+  position: fixed;
+  cursor: pointer;
+}
+#listen{
+  width: 80%;
+  padding: 0% 10%;
+  height: 575px;
+  background-color: #1f1f1f;
+  color: #F3F3F3;
+  z-index: 10;
+  position: relative;
+  text-transform: uppercase;
+}
+#listen h1{
+  font-weight: bolder;
+  font-size: 55px;
+  color: #F3F3F3;
+  text-align: center;
+  padding-top: 70px;
+  padding-bottom: 25px;
+}
+#listen #left{
+  float: left;
+  width: 25%;
+}
+#listen #left img{
+  width: 300px;
+  height: 300px;
+  margin-bottom: 15px;
+}
+#listen #left #track-info{
+  width: 80%;
+}
+#listen #left #track-info span{
+  display: block;
+}
+#listen #left #track, #listen #left #artist{
+  text-align: center;
+}
+#listen #left #track{
+  font-size: 24px;
+}
+#listen #left #artist{
+  font-size: 16px;
+}
+#listen #radio{
+  width: 48%;
+  float: right;
+  height: 400px;
+}
+#listen #radio #stationname {
+    margin-top: 100px;
+    text-transform: uppercase;
+    font-size: 45px;
+    position: inherit;
+    text-align: center;
+    margin: 119px 0px;
+    display: block;
+}
+#listen #radio #audio{
+  bottom: 0;
+}
+#listen #radio #audio i{
+  float: left;
+  font-size: 60px;
+}
+#listen #radio #audio #VolumeSlider{
+  float: right;
+  width: 90%;
+  margin-top: 22px;
+}
+#listen #radio #playbackControls{
+  margin: auto;
+  width: 34%;
+}
+#listen #radio #playbackControls i {
+  border: 3px solid #F3F3F3;
+width: 16px;
+height: 15px;
+padding: 11px 26px 39px 20px;
+border-radius: 100%;
+font-size: 44px;
+cursor: pointer;
+margin-left: 10px;
+}
+#listen #stations{
+  display: block;
+float: left;
+width: 20%;
+}
+#listen #stations #col1,#listen #stations #col1{
+  width: 25%;
+    float: left;
+}
+#listen #stations li:hover, #listen #stations li:hover{
+  color: #66b8fa;
+  cursor: pointer;
+}
+#footer{
+  z-index: 8;
+  width: 100%;
+  height: 450px;
+  background-color: #242424;
+  position: relative;
+}
+#footer #left{
+  float: left;
+  position: relative;
+  width: 33.2%;
+}
+#footer #left a{
+  text-decoration: none;
+}
+#footer #left img{
+  margin-left: 100px;
+  margin-top: 50px;
+}
+#footer #left span{
+  font-weight: bolder;
+  text-transform: uppercase;
+  font-size: 34px;
+  display: block;
+  color: #F3F3F3;
+  margin-left: 90px;
+  margin-top: 20px;
+}
+#footer #middle{
+  float: left;
+  position: relative;
+  width: 33.2%;
+}
+#footer #middle #copyright{
+  color: #F3F3F3;
+  font-size: 18px;
+  text-align: center;
+  margin: auto;
+  position: relative;
+  display: block;
+  margin-top: 67%;
+}
+#footer #right{
+  float: left;
+  position: relative;
+  width: 33.2%;
+}
+#footer #right a{
+  text-decoration: none;
+}
+#footer #right img{
+  margin-left: 100px;
+  margin-top: 50px;
+}
+#footer #right span{
+  font-weight: bolder;
+  text-transform: uppercase;
+  font-size: 34px;
+  display: block;
+  color: #F3F3F3;
+  margin-left: 145px;
+  margin-top: 20px;
+}
+/***Volume Bar******/
+.ui-slider-horizontal .ui-slider-range-min{
+  background-color: #59b5f3;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active{
+  border-radius: 100%;
+  cursor: pointer;
+  outline: none;
+}
+/**********Scroll Bar*************/
+::-webkit-scrollbar
+{
+  width: 12px;  /* for vertical scrollbars */
+  height: 12px; /* for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track
+{
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb
+{
+  background: rgba(0, 0, 0, 0.5);
+}
