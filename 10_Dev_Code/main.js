@@ -13,7 +13,7 @@ radio = {
     "Stations": [
       {
         name: "Kiss",
-        audioLink: "http://icy-e-ba-08-boh.sharp-stream.com/kissnational.aac"
+        audioLink: "http://icy-e-ba-08-boh.sharp-stream.com/kissnational.mp3"
       },
       {
         name: "Capital",
@@ -58,6 +58,7 @@ radio = {
       var audioSource = document.getElementById('audiosourcetag');
       audioSource.src = radio.Stations[stationID].audioLink;
       audio.load();
+      radio.GetMetaData();
     },
 
     StationSeek: function(direction){
@@ -71,12 +72,15 @@ radio = {
       } else if (direction == "down"){
         radio.ActiveStation = radio.ActiveStation - 1;
         if (radio.ActiveStation < 0){
-          radio.ActiveStation = 4;
+          radio.ActiveStation = (radio.Stations.length - 1);
         };
         radio.StationChange(radio.ActiveStation);
       }else{
         SAM.ErrorOutput("2");
       };
+    },
+    findStation: function(t){
+      console.log(t);
     },
     populateStationList: function(){
       stationList = d.getElementById("stations");
@@ -84,13 +88,12 @@ radio = {
       for (var i = 0; i < radio.Stations.length; i++) {
         if (stationList.children[0].children[0].children < 19)
         {
-          stationList.children[0].children[0].innerHTML += "<li>"+radio.Stations[i].name+"</li>";
+          stationList.children[0].children[0].innerHTML += "<li data-snum="+i+" onclick='radio.ActiveStation = this.dataset.snum; radio.StationChange(radio.ActiveStation);'>"+radio.Stations[i].name+"</li>";
         } else {
-          stationList.children[1].children[0].innerHTML += "<li>"+radio.Stations[i].name+"</li>";
+          stationList.children[1].children[0].innerHTML += "<li data-snum="+i+" onclick='radio.ActiveStation = this.dataset.snum; radio.StationChange(radio.ActiveStation);'>"+radio.Stations[i].name+"</li>";
         }
       }
     },
-
     ErrorOutput: function(code){
       console.log('Error Code: '+code);
       console.log('Please contact the web administrator or a developer at radio@samdjames.uk with this error code!');
@@ -126,6 +129,28 @@ radio = {
       }else{
         radio.ErrorOutput("No such station!");
       };
+    },
+    GetMetaData: function(){
+      document.getElementById('prxy').src = 'http://127.0.0.1/radio/10_Dev_Code/proxy.php?streamurl='+document.getElementById('audiosourcetag').src;
+      document.getElementById('prxy').src = 'http://127.0.0.1/radio/10_Dev_Code/proxy.php?streamurl='+radio.Stations[radio.ActiveStation].audioLink;
+      if (document.getElementById('prxy').contentWindow.document.body.children.length == 1){
+        //Do Good Stuff
+        console.log(document.getElementById('prxy').contentWindow.document.body.children[0].children[2].innerHTML);
+        var Meta = document.getElementById('prxy').contentWindow.document.body.children[0].children[2].innerHTML.split(" - ");
+        if (Meta[0].length == 2){
+          //No Track/Artist
+          document.getElementById('track').innerHTML = "Could not find track information!!";
+          document.getElementById('artist').innerHTML = "2";
+        }else{
+          document.getElementById('artist').innerHTML = Meta[0].split("'")[1];
+          document.getElementById('track').innerHTML = Meta[1].split("'")[0];
+        }
+      }else{
+        console.log('I might have broke!!');
+        document.getElementById('track').innerHTML = "An Error Occured?";
+        document.getElementById('artist').innerHTML = "Maybe?";
+      };
+      console.log("Queried: "+document.getElementById('prxy').src);
     }
 };
 /*******************SAM******************/
@@ -160,3 +185,4 @@ $( function() {
       }
     });
   } );
+setTimeout(radio.GetMetaData, 300);
