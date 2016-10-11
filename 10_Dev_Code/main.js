@@ -1,4 +1,5 @@
 d = document;w = window;
+var startVol = .5;
 ////////*********************RADIO*****************************/
 radio = {
     RadioState: 0,
@@ -8,6 +9,7 @@ radio = {
       d.getElementById("stationname").innerHTML = radio.Stations[radio.ActiveStation].name;
       d.getElementById("stationArt").src = radio.Stations[radio.ActiveStation].img;
       radio.populateStationList();
+      radio.SetStartVolume();
       //PRoxy Setup
         var proxy = document.getElementById('prxy');
         proxy.addEventListener("load", function() {
@@ -20,27 +22,27 @@ radio = {
       {
         name: "Kiss",
         audioLink: "http://icy-e-ba-08-boh.sharp-stream.com/kissnational.mp3",
-        img: "https://i3.radionomy.com/radios/400/a8cfb367-07df-4950-8ed1-94c8fba01cf2.jpg"
+        img: "img/kiss.png"
       },
       {
         name: "Capital",
         audioLink: "http://media-ice.musicradio.com/CapitalSouthWalesMP3",
-        img: "https://static-media.streema.com/media/object-images/752a3c726d10c96acbbd52a8292aef0a.jpg"
+        img: "img/capital.png"
       },
       {
         name: "Heart",
         audioLink: "http://media-ice.musicradio.com/HeartSouthWalesMP3",
-        img: "https://lh3.googleusercontent.com/eOwS8p5wy1Q7NXTq2jU1Rb_OxxnddW0m1VQ12azg9opDJvsQKiu7JP7VIo0ptuNg4A=w300"
+        img: "img/heart.png"
       },
       {
         name: "Nation",
         audioLink: "http://icy-e-03-boh.sharp-stream.com/tcnation.aac",
-        img: "https://pbs.twimg.com/profile_images/772822174017187840/FbDGHub5.jpg"
+        img: "img/nation.png"
       },
       {
         name: "Hive365",
         audioLink: "http://stream.hive365.co.uk:8088/live",
-        img: "http://hive365.co.uk/img/footer-logo.png"
+        img: "img/hive.png"
       }
     ],
   //Play And Pause Function
@@ -160,6 +162,14 @@ radio = {
         d.getElementById('track').innerHTML = "An Error Occured?";
         d.getElementById('artist').innerHTML = "Maybe?";
       };
+    },
+    SetStartVolume: function(){
+      if (typeof SAM.getCookie("volume") != 'undefined'){
+        StartVol = SAM.getCookie("volume");
+      }else{
+        StartVol = .5;
+      };
+      d.getElementById('audiotag').volume = StartVol;
     }
 };
 /*******************SAM******************/
@@ -178,6 +188,21 @@ SAM = {
       }
     }
     return false;
+  },
+  //Cookies
+  getCookie: function(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length,c.length);
+        }
+    }
+    return "";
   }
 };
 /***********INIT STUFF**************/
@@ -188,9 +213,10 @@ $( function() {
       range: "min",
       min: 0,
       max: 100,
-      value: 50,
+      value: StartVol*100,
       slide: function( event, ui ) {
         d.getElementById('audiotag').volume = ui.value/100;
+        d.cookie = "volume="+ui.value/100;
       }
     });
   } );
