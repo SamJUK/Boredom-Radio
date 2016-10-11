@@ -1,5 +1,5 @@
 <?php
-
+    $errors = [];
     function getMp3StreamTitle($streamingUrl, $interval, $offset = 0, $headers = true)
     {
         $needle = 'StreamTitle=';
@@ -36,5 +36,15 @@
         else
             throw new Exception("Unable to open stream [{$streamingUrl}]");
     }
-
-    var_dump(getMp3StreamTitle($_REQUEST['streamurl'], 19200));
+    echo '<div id="streamdata">';
+    if (isSet($_GET['streamurl'])){
+      echo(getMp3StreamTitle($_REQUEST['streamurl'], 19200));
+    }else{
+      array_push($errors,"No stream url defined");
+    };
+    echo '</div>';
+    echo '<div id="errors">';
+    foreach ($errors as $error) {
+      echo '<span>'.$error.'</span>';
+    };
+    echo '</div>';

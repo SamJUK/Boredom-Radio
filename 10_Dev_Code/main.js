@@ -8,7 +8,12 @@ radio = {
       d.getElementById("stationname").innerHTML = radio.Stations[radio.ActiveStation].name;
       d.getElementById("stationArt").src = radio.Stations[radio.ActiveStation].img;
       radio.populateStationList();
-      radio.GetMetaData();
+      //PRoxy Setup
+        var proxy = document.getElementById('prxy');
+        proxy.addEventListener("load", function() {
+            console.log("Ifrm Refreshed");
+            radio.GetMetaData();
+        });
     },
   //Stations
     "Stations": [
@@ -64,7 +69,7 @@ radio = {
       var audioSource = d.getElementById('audiosourcetag');
       audioSource.src = radio.Stations[stationID].audioLink;
       audio.load();
-      radio.GetMetaData();
+      radio.ChangeProxy();
     },
 
     StationSeek: function(direction){
@@ -133,27 +138,28 @@ radio = {
         radio.ErrorOutput("No such station!");
       };
     },
+    ChangeProxy: function(){
+      d.getElementById('prxy').src = 'proxy.php?streamurl='+radio.Stations[radio.ActiveStation].audioLink;
+    },
     GetMetaData: function(){
-      //d.getElementById('prxy').src = 'http://127.0.0.1/radio/10_Dev_Code/proxy.php?streamurl='+d.getElementById('audiosourcetag').src;
-      d.getElementById('prxy').src = 'http://127.0.0.1/radio/10_Dev_Code/proxy.php?streamurl='+radio.Stations[radio.ActiveStation].audioLink;
-      if (d.getElementById('prxy').contentWindow.document.body.children.length == 1){
-        //Do Good Stuff
-        console.log(d.getElementById('prxy').contentWindow.document.body.children[0].children[2].innerHTML);
-        var Meta = d.getElementById('prxy').contentWindow.document.body.children[0].children[2].innerHTML.split(" - ");
-        if (Meta[0].length == 2){
-          //No Track/Artist
+      if ((d.getElementById('prxy').contentWindow.document.getElementById('errors').children.length) == 0) {
+        //No Errors Occured
+          if ((d.getElementById('prxy').contentWindow.document.getElementById('streamdata').innerHTML.length) < 1){
+          //Error getting track info?
+          console.log("Error finding track information?");
           d.getElementById('track').innerHTML = "Could not find track information!!";
           d.getElementById('artist').innerHTML = "";
         }else{
+          var Meta = d.getElementById('prxy').contentWindow.document.getElementById('streamdata').innerHTML.split(" - ");
           d.getElementById('artist').innerHTML = Meta[0].split("'")[1];
           d.getElementById('track').innerHTML = Meta[1].split("'")[0];
-        }
+        };
       }else{
+        //Error Occured
         console.log('I might have broke!!');
         d.getElementById('track').innerHTML = "An Error Occured?";
         d.getElementById('artist').innerHTML = "Maybe?";
       };
-      console.log("Queried: "+d.getElementById('prxy').src);
     }
 };
 /*******************SAM******************/
