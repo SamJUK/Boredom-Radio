@@ -43,7 +43,7 @@
         <a name="Listen"></a>
         <h1>Listen Now!</h1>
         <div id="left">
-          <img src="http://sheet.host/assets/img/score-placeholder.png" alt="Currently Playing Album Artwork" />
+          <img id="stationArt" src="" alt="Currently Playing Album Artwork" />
           <div id="track-info">
             <span id="track">{Track Name}</span>
             <span id="artist">{Artist's Names}</span>
@@ -90,7 +90,7 @@
       <audio id="audiotag" autoplay="true">
         <source id="audiosourcetag" type="audio/aac">
       </audio>
-      <iframe id="prxy" src="http://127.0.0.1/radio/10_Dev_Code/proxy.php" height="0" width="0" style="display: none;"></iframe>
+      <iframe id="prxy" src="http://127.0.0.1/radio/10_Dev_Code/proxy.php?streamurl=http://icy-e-ba-08-boh.sharp-stream.com/kissnational.mp3" height="0" width="0" style="display: none;"></iframe>
       <script src="smoothscroll.js"></script>
       <script src="main.js"></script>
     </body>

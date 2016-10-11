@@ -5,31 +5,37 @@ radio = {
     ActiveStation: 0,
   //Init Function
     Init: function(){
-      stationName = radio.Stations[0].name;
-      $("#stationname").text(stationName);
+      d.getElementById("stationname").innerHTML = radio.Stations[radio.ActiveStation].name;
+      d.getElementById("stationArt").src = radio.Stations[radio.ActiveStation].img;
       radio.populateStationList();
+      radio.GetMetaData();
     },
   //Stations
     "Stations": [
       {
         name: "Kiss",
-        audioLink: "http://icy-e-ba-08-boh.sharp-stream.com/kissnational.mp3"
+        audioLink: "http://icy-e-ba-08-boh.sharp-stream.com/kissnational.mp3",
+        img: "https://i3.radionomy.com/radios/400/a8cfb367-07df-4950-8ed1-94c8fba01cf2.jpg"
       },
       {
         name: "Capital",
-        audioLink: "http://media-ice.musicradio.com/CapitalSouthWalesMP3"
+        audioLink: "http://media-ice.musicradio.com/CapitalSouthWalesMP3",
+        img: "https://static-media.streema.com/media/object-images/752a3c726d10c96acbbd52a8292aef0a.jpg"
       },
       {
         name: "Heart",
-        audioLink: "http://media-ice.musicradio.com/HeartSouthWalesMP3"
+        audioLink: "http://media-ice.musicradio.com/HeartSouthWalesMP3",
+        img: "https://lh3.googleusercontent.com/eOwS8p5wy1Q7NXTq2jU1Rb_OxxnddW0m1VQ12azg9opDJvsQKiu7JP7VIo0ptuNg4A=w300"
       },
       {
         name: "Nation",
-        audioLink: "http://icy-e-03-boh.sharp-stream.com/tcnation.aac"
+        audioLink: "http://icy-e-03-boh.sharp-stream.com/tcnation.aac",
+        img: "https://pbs.twimg.com/profile_images/772822174017187840/FbDGHub5.jpg"
       },
       {
         name: "Hive365",
-        audioLink: "http://stream.hive365.co.uk:8088/live"
+        audioLink: "http://stream.hive365.co.uk:8088/live",
+        img: "http://hive365.co.uk/img/footer-logo.png"
       }
     ],
   //Play And Pause Function
@@ -41,8 +47,8 @@ radio = {
       }else if (radio.RadioState == 1) {
         radio.RadioState = 0;
         d.getElementById("playPause").className = "fa fa-play";
-        var audio = document.getElementById('audiotag');
-        var audioSource = document.getElementById('audiosourcetag');
+        var audio = d.getElementById('audiotag');
+        var audioSource = d.getElementById('audiosourcetag');
         audioSource.src = "";
         audio.load();
         Radio_Power_State = 0;
@@ -52,10 +58,10 @@ radio = {
     },
   //Change Station Function
     StationChange: function(stationID){
-      stationName = radio.Stations[stationID].name;
-      $("#stationname").text(stationName);
-      var audio = document.getElementById('audiotag');
-      var audioSource = document.getElementById('audiosourcetag');
+      d.getElementById("stationname").innerHTML = radio.Stations[radio.ActiveStation].name;
+      d.getElementById("stationArt").src = radio.Stations[radio.ActiveStation].img;
+      var audio = d.getElementById('audiotag');
+      var audioSource = d.getElementById('audiosourcetag');
       audioSource.src = radio.Stations[stationID].audioLink;
       audio.load();
       radio.GetMetaData();
@@ -78,9 +84,6 @@ radio = {
       }else{
         SAM.ErrorOutput("2");
       };
-    },
-    findStation: function(t){
-      console.log(t);
     },
     populateStationList: function(){
       stationList = d.getElementById("stations");
@@ -131,26 +134,26 @@ radio = {
       };
     },
     GetMetaData: function(){
-      document.getElementById('prxy').src = 'http://127.0.0.1/radio/10_Dev_Code/proxy.php?streamurl='+document.getElementById('audiosourcetag').src;
-      document.getElementById('prxy').src = 'http://127.0.0.1/radio/10_Dev_Code/proxy.php?streamurl='+radio.Stations[radio.ActiveStation].audioLink;
-      if (document.getElementById('prxy').contentWindow.document.body.children.length == 1){
+      //d.getElementById('prxy').src = 'http://127.0.0.1/radio/10_Dev_Code/proxy.php?streamurl='+d.getElementById('audiosourcetag').src;
+      d.getElementById('prxy').src = 'http://127.0.0.1/radio/10_Dev_Code/proxy.php?streamurl='+radio.Stations[radio.ActiveStation].audioLink;
+      if (d.getElementById('prxy').contentWindow.document.body.children.length == 1){
         //Do Good Stuff
-        console.log(document.getElementById('prxy').contentWindow.document.body.children[0].children[2].innerHTML);
-        var Meta = document.getElementById('prxy').contentWindow.document.body.children[0].children[2].innerHTML.split(" - ");
+        console.log(d.getElementById('prxy').contentWindow.document.body.children[0].children[2].innerHTML);
+        var Meta = d.getElementById('prxy').contentWindow.document.body.children[0].children[2].innerHTML.split(" - ");
         if (Meta[0].length == 2){
           //No Track/Artist
-          document.getElementById('track').innerHTML = "Could not find track information!!";
-          document.getElementById('artist').innerHTML = "2";
+          d.getElementById('track').innerHTML = "Could not find track information!!";
+          d.getElementById('artist').innerHTML = "";
         }else{
-          document.getElementById('artist').innerHTML = Meta[0].split("'")[1];
-          document.getElementById('track').innerHTML = Meta[1].split("'")[0];
+          d.getElementById('artist').innerHTML = Meta[0].split("'")[1];
+          d.getElementById('track').innerHTML = Meta[1].split("'")[0];
         }
       }else{
         console.log('I might have broke!!');
-        document.getElementById('track').innerHTML = "An Error Occured?";
-        document.getElementById('artist').innerHTML = "Maybe?";
+        d.getElementById('track').innerHTML = "An Error Occured?";
+        d.getElementById('artist').innerHTML = "Maybe?";
       };
-      console.log("Queried: "+document.getElementById('prxy').src);
+      console.log("Queried: "+d.getElementById('prxy').src);
     }
 };
 /*******************SAM******************/
@@ -181,8 +184,7 @@ $( function() {
       max: 100,
       value: 50,
       slide: function( event, ui ) {
-        document.getElementById('audiotag').volume = ui.value/100;
+        d.getElementById('audiotag').volume = ui.value/100;
       }
     });
   } );
-setTimeout(radio.GetMetaData, 300);
