@@ -1,10 +1,17 @@
 # HJRadio
 >I needed a pass time tonight.
 
-Basic radio stream client.
-Written in Javascript and HTML.
-Uhh thats it i think.
-Email: nintendosamhd@gmail.com
+Multiple Radio Stream Client.
+
+Written in HTML and Javascript, with a PHP Proxy for cross origin requests.
+
+UI/Design was an after thought. (Yes I know its shit :sweat:)
+
+#TODO
+* Extract Meta data from the audio file instead of using server status?
+* Make a decent UI :blush:
+* Album Artwork from song name? Library?
+* Add support for Flash streams (like Frag Radio)
 
 ## License
 
