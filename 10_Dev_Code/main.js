@@ -151,8 +151,8 @@ radio = {
           d.getElementById('artist').innerHTML = "";
         }else{
           var Meta = d.getElementById('prxy').contentWindow.document.getElementById('streamdata').innerHTML.split(" - ");
-          d.getElementById('artist').innerHTML = Meta[0].split("'")[1];
-          d.getElementById('track').innerHTML = Meta[1].split("'")[0];
+          d.getElementById('artist').innerHTML = Meta[0];
+          d.getElementById('track').innerHTML = Meta[1];
         };
       }else{
         //Error Occured
