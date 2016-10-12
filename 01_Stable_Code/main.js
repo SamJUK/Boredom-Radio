@@ -4,7 +4,6 @@ var startVol = .5;
 radio = {
     RadioState: 0,
     ActiveStation: 0,
-    Muted: false,
   //Init Function
     Init: function(){
       d.getElementById("stationname").innerHTML = radio.Stations[radio.ActiveStation].name;
@@ -171,31 +170,6 @@ radio = {
         StartVol = .5;
       };
       d.getElementById('audiotag').volume = StartVol;
-      if((d.getElementById('audiotag').volume) == 0){
-        d.getElementById("MuteUnmute").className = "fa fa-volume-off";
-      }
-      else if ((d.getElementById('audiotag').volume) >= .5){
-        d.getElementById("MuteUnmute").className = "fa fa-volume-up";
-      }else{
-        d.getElementById("MuteUnmute").className = "fa fa-volume-down";
-      };
-    },
-    MuteVolume: function(){
-      if (!radio.Muted){
-        //Not Muted
-        radio.Muted = d.getElementById('audiotag').volume;
-        d.getElementById('audiotag').volume = 0;
-        d.getElementById("MuteUnmute").className = "fa fa-volume-off";
-      }else{
-        //Muted
-        d.getElementById('audiotag').volume = radio.Muted;
-        if (radio.Muted >= .5){
-          d.getElementById("MuteUnmute").className = "fa fa-volume-up";
-        }else{
-          d.getElementById("MuteUnmute").className = "fa fa-volume-down";
-        };
-        radio.Muted = false;
-      }
     }
 };
 /*******************SAM******************/
@@ -243,14 +217,6 @@ $( function() {
       slide: function( event, ui ) {
         d.getElementById('audiotag').volume = ui.value/100;
         d.cookie = "volume="+ui.value/100;
-        if(ui.value/100 == 0){
-          d.getElementById("MuteUnmute").className = "fa fa-volume-off";
-        }
-        else if (ui.value/100 >= .5){
-          d.getElementById("MuteUnmute").className = "fa fa-volume-up";
-        }else{
-          d.getElementById("MuteUnmute").className = "fa fa-volume-down";
-        };
       }
     });
   } );

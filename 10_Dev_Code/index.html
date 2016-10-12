@@ -4,7 +4,7 @@
       <link href="assets/img/256.ico" type="image/ico" rel="icon">
       <link href="style.css" type="text/css" rel="stylesheet" />
       <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet" />
-      <link href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css" rel="stylesheet" >
+      <link href="http://code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css" rel="stylesheet" >
       <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous" />
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
       <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
@@ -25,41 +25,20 @@
           <a class="smoothScroll" href="https://github.com/SamJUK/Boredom-Radio"><span>Fork Me!</span></a>
         </div>
         <a class="smoothScroll" href="#listen">
-        <!--  <div id="spikything">
-            <div id="spike">
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
-            <div id="icon"></div>
-          </div>
-          <div id="stline"></div>-->
-          <div style="
-                position: absolute;
-                width: 100%;
-                bottom: 0;
-            "><div id="" style="
-                position: relative;
-                margin-left: auto;
-                bottom: 0px;
-            " class="">
-                      <div id="spikything">
-                        <div id="spike" style="
-                margin: auto;
-            ">
-                          <div></div>
-                          <div></div>
-                          <div></div>
-                          <div></div>
-                          <div></div>
-                          <div></div>
-                        </div>
-                        <div id="icon"></div>
-                      </div>
-                      <div id="stline"></div>
+          <div id="spikeythingcontainer">
+            <div>
+                <div id="spikything">
+                    <div id="spike" style="margin: auto;">
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                    </div>
+                    <div id="icon"></div>
+                  </div>
+                <div id="stline"></div>
               </div>
             </div>
         </a>
@@ -90,7 +69,7 @@
             <i onMouseDown="radio.StationSeek('up');" class="fa fa-step-forward" aria-hidden="true"></i>
           </div>
           <div id="audio">
-            <i class="fa fa-volume-up" aria-hidden="true"></i>
+            <i id="MuteUnmute" onMouseDown="radio.MuteVolume();" class="fa fa-volume-up" aria-hidden="true"></i>
             <div id="VolumeSlider"></div>
           </div>
         </div>

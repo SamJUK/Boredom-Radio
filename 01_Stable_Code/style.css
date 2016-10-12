@@ -88,24 +88,14 @@ body{
 #Cover #spikything #spike div:nth-child(6){
   transform: rotate(75deg);
 }
-#Cover #spikeythingcontainer{
-  position: absolute;
-  width: 100%;
-  bottom: 0;
-}
-#Cover #spikeythingcontainer div nth-child(1){
-  position: relative;
-  margin-left: auto;
-  bottom: 0px;
-}
-#Cover #spikeythingcontainer #spikything #icon{
+#Cover #spikything #icon{
   background: url('img/hp.png');
   width: 50px;
   height: 50px;
   background-size: cover;
   margin: 25px 25px 25px 25px;
 }
-#Cover #spikeythingcontainer #stline{
+#Cover #stline{
   width: 1px;
   height: 248px;
   background-color: #F3F3F3;
@@ -177,7 +167,6 @@ body{
   float: left;
   font-size: 60px;
   position: absolute;
-  cursor: pointer;
 }
 #listen #radio #audio #VolumeSlider{
   float: right;
